@@ -150,7 +150,7 @@
           &kp ESC           &kp N1        &kp N2       &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7     &kp N8       &kp N9        &kp N0       &kp MINUS
           &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
           &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
-          &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp END  &kp HOME  &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
+          &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp HOME &kp END   &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
           &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
           >;
         };
@@ -161,7 +161,7 @@
           &trans            &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &kp PSCRN
           &trans            &kp STAR      &kp HASH     &kp PT_LBKT &kp PT_RBKT &kp PT_PIPE                                                                &kp PRCNT    &kp N7     &kp N8       &kp N9        &kp KP_MINUS &kp SLCK
           &trans            &kp AT        &kp DOLLAR   &kp LPAR    &kp RPAR    &kp PT_CARET                                                               &kp COMMA    &kp N4     &kp N5       &kp N6        &kp KP_mply  &trans
-          &trans            &kp EXCL      &kp AMPS     &kp PT_LBRC &kp PT_RBRC &kp PT_TILDE &trans  &trans    &trans          &trans   &trans   &trans    &kp KP_DOT   &kp N1     &kp N2       &kp N3        &kp KP_PLUS  &trans
+          &trans            &kp EXCL      &kp AMPS     &kp PT_LBRC &kp PT_RBRC &kp PT_TILDE &trans  &trans    &trans          &trans   &trans   &trans    &kp DOT      &kp N1     &kp N2       &kp N3        &kp KP_PLUS  &trans
           &trans            &kp KP_MINUS  &kp KP_EQUAL &kp LT      &kp GT                   &trans  &trans    &trans          &trans   &trans   &trans                 &kp N0     &kp DOT      &kp EQUAL     &kp KP_SLASH &trans
             >;
         };
