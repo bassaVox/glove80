@@ -17,6 +17,7 @@
 
 #define HYPER LC(LS(LG(LALT)))
 
+// Portuguese layout (ABNT2) keys
 // https://github.com/joelspadin/zmk-locale-generator/releases/download/v1.3.2/keys_pt_abnt2.h
 #define PT_C_CEDILLA (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON))
 #define C_Dilla (PT_C_CEDILLA)
@@ -47,7 +48,7 @@
  * 
  *
  *
- *
+ * zmk key codes can be consulted here: https://zmk.dev/docs/codes
  *
  *
  */
@@ -146,7 +147,7 @@
           &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
           &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
           &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp END  &kp HOME  &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
-          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp KP_EQUAL  &kp PT_FSLH  &kp RMETA
+          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
           >;
         };
 
@@ -154,10 +155,10 @@
           bindings = <
           &kp C_BRI_DN      &kp C_BRI_UP  &kp C_PREV   &kp C_NEXT  &kp C_PP                                                                                            &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  &none        &kp PAUSE_BREAK
           &trans            &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &kp PSCRN
-          &trans            &kp STAR      &kp HASH     &kp PT_LBKT &kp PT_RBKT &kp PT_PIPE                                                                &kp PRCNT    &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS &kp SLCK
-          &trans            &kp AT        &kp DOLLAR   &kp LPAR    &kp RPAR    &kp PT_CARET                                                               &kp COMMA    &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_mply  &trans
-          &trans            &kp EXCL      &kp AMPS     &kp LBRC    &kp RBRC    &kp PT_TILDE &trans  &trans    &to DONTQY      &trans   &trans   &trans    &kp KP_DOT   &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_PLUS  &trans
-          &trans            &kp KP_MINUS  &kp KP_EQUAL &kp LT      &kp GT                   &trans  &trans    &trans          &trans   &trans   &trans                 &kp KP_N0  &kp KP_DOT   &kp KP_EQUAL  &kp KP_SLASH &trans
+          &trans            &kp STAR      &kp HASH     &kp PT_LBKT &kp PT_RBKT &kp PT_PIPE                                                                &kp PRCNT    &kp N7     &kp N8       &kp N9        &kp KP_MINUS &kp SLCK
+          &trans            &kp AT        &kp DOLLAR   &kp LPAR    &kp RPAR    &kp PT_CARET                                                               &kp COMMA    &kp N4     &kp N5       &kp N6        &kp KP_mply  &trans
+          &trans            &kp EXCL      &kp AMPS     &kp LBRC    &kp RBRC    &kp PT_TILDE &trans  &trans    &trans          &trans   &trans   &trans    &kp KP_DOT   &kp N1     &kp N2       &kp N3        &kp KP_PLUS  &trans
+          &trans            &kp KP_MINUS  &kp KP_EQUAL &kp LT      &kp GT                   &trans  &trans    &trans          &trans   &trans   &trans                 &kp N0     &kp DOT      &kp EQUAL     &kp KP_SLASH &trans
             >;
         };
 
