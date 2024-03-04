@@ -5,21 +5,61 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/keys.h> // https://github.com/zmkfirmware/zmk/blob/main/app/include/dt-bindings/zmk/keys.h
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#include <dt-bindings/zmk/hid_usage.h>
+#include <dt-bindings/zmk/hid_usage_pages.h>
+#include <dt-bindings/zmk/modifiers.h>
+
 #define HYPER LC(LS(LG(LALT)))
 
+// https://github.com/joelspadin/zmk-locale-generator/releases/download/v1.3.2/keys_pt_abnt2.h
+#define PT_C_CEDILLA (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SEMICOLON_AND_COLON))
+#define C_Dilla (PT_C_CEDILLA)
+#define PT_SINGLE_QUOTE (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_GRAVE_ACCENT_AND_TILDE))
+#define PT_SQT (PT_SINGLE_QUOTE)
+#define PT_BACKSLASH (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_NON_US_BACKSLASH_AND_PIPE))
+#define PT_BSLH (PT_BACKSLASH)
+#define PT_COLON (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SLASH_AND_QUESTION_MARK)))
+#define PT_SLASH (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_INTERNATIONAL1))
+#define PT_FSLH (PT_SLASH)
+#define PT_SEMICOLON (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_SLASH_AND_QUESTION_MARK))
+#define PT_SEMI (PT_SEMICOLON)
+#define PT_ACUTE (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_LEFT_BRACKET_AND_LEFT_BRACE))
+#define PT_TILDE (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE))
+#define PT_LEFT_BRACKET (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_RIGHT_BRACKET_AND_RIGHT_BRACE))
+#define PT_LBKT (PT_LEFT_BRACKET)
+#define PT_RIGHT_BRACKET (ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_BACKSLASH_AND_PIPE))
+#define PT_RBKT (PT_RIGHT_BRACKET)
+#define PT_PIPE (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_NON_US_BACKSLASH_AND_PIPE)))
+#define PT_CARET (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_APOSTROPHE_AND_QUOTE)))
+
+
+#define KP_mply (KP_MULTIPLY)
+
+/* &mo DONTQY -> Momentary Layer 0 toggled by keypress
+ * &lt SYMBOL PT_SQT -> Layer_tap, Layer 1 when held send keycode ' when tapped
+ * &mt LSHIFT CAPS -> Mod-Tap behavior, shift when held caps when tapped
+ * 
+ *
+ *
+ *
+ *
+ *
+ */
+
+
 // layers
-#define DEFAULT 0
-#define LOWER 1
+#define DONTQY 0 // DEFAULT
+#define SYMBOL 1 // LOWER 1
 #define MAGIC 2
 #define FACTORY_TEST 3
 
-/ {
+/ { // root device tree Node
     behaviors {
         // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
         // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
@@ -28,7 +68,7 @@
             label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo LOWER>, <&to LOWER>;
+            bindings = <&mo SYMBOL>, <&to SYMBOL>;
         };
 
         magic: magic_hold_tap {
@@ -88,35 +128,36 @@
     };
 
     keymap {
-        compatible = "zmk,keymap";
+      compatible = "zmk,keymap"; // this is a prerequisite
 
-        default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
-            // |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                                                 |  Y   |   U   |   I   |  O   |   P   |   \  |
-            // |  ESC  |  A  |  S  |  D   |  F   |  G   |                                                 |  H   |   J   |   K   |  L   |   ;   |   '  |
-            // |   `   |  Z  |  X  |  C   |  V   |  B   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  N   |   M   |   ,   |  .   |   /   | PGUP |
-            // | MAGIC | HOME| END | LEFT | RIGHT|      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  UP   | DOWN  |  [   |   ]   | PGDN |
+        dontqy_layer {
+          // default moergo layer
+          // ---------------------------------------------------------------------------------------------------------------------------------
+          // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
+          // |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
+          // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                                                 |  Y   |   U   |   I   |  O   |   P   |   \  |
+          // |  ESC  |  A  |  S  |  D   |  F   |  G   |                                                 |  H   |   J   |   K   |  L   |   ;   |   '  |
+          // |   `   |  Z  |  X  |  C   |  V   |  B   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  N   |   M   |   ,   |  .   |   /   | PGUP |
+          // | MAGIC | HOME| END | LEFT | RIGHT|      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  UP   | DOWN  |  [   |   ]   | PGDN |
 
-            bindings = <
-            &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                         &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
-            &kp EQUAL      &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                     &kp N6  &kp N7  &kp N8      &kp N9      &kp N0      &kp MINUS
-            &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                      &kp Y   &kp U   &kp I       &kp O       &kp P       &kp BSLH
-            &kp ESC        &kp A    &kp S       &kp D       &kp F       &kp G                                                                      &kp H   &kp J   &kp K       &kp L       &kp SEMI    &kp SQT
-            &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT   &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
-            &magic MAGIC 0 &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp BSPC    &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE           &kp UP  &kp DOWN    &kp LBKT    &kp RBKT    &kp PG_DN
-            >;
+          bindings = <
+          &kp F1            &kp F2        &kp F3       &kp F4      &kp F5                                                                                              &kp F6     &kp F7       &kp F8        &kp F9       &kp F10
+          &kp ESC           &kp N1        &kp N2       &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7     &kp N8       &kp N9        &kp N0       &kp MINUS
+          &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
+          &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
+          &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp END  &kp HOME  &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
+          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp KP_EQUAL  &kp PT_FSLH  &kp RMETA
+          >;
         };
 
-        lower_layer {
-            bindings = <
-            &kp C_BRI_DN      &kp C_BRI_UP        &kp C_PREV      &kp C_NEXT      &kp C_PP                                                                                                           &kp C_MUTE   &kp C_VOL_DN &kp C_VOL_UP  &none           &kp PAUSE_BREAK
-            &trans            &none               &none           &none           &none           &kp HOME                                                                              &kp LPAR     &kp KP_NUM   &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp PSCRN
-            &trans            &none               &none           &kp UP          &none           &kp END                                                                               &kp RPAR     &kp KP_N7    &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp SLCK
-            &trans            &none               &kp LEFT        &kp DOWN        &kp RIGHT       &kp PG_UP                                                                             &kp PRCNT    &kp KP_N4    &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &none
-            &trans            &kp K_CMENU         &none           &kp F11         &kp F12         &kp PG_DN       &trans      &trans      &to DEFAULT &trans      &trans      &trans    &kp COMMA    &kp KP_N1    &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &trans
-            &trans            &kp CAPS            &kp INS         &kp F11         &kp F12                         &trans      &trans      &trans      &trans      &trans      &trans                 &kp KP_N0    &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &trans
+        symbol_layer {
+          bindings = <
+          &kp C_BRI_DN      &kp C_BRI_UP  &kp C_PREV   &kp C_NEXT  &kp C_PP                                                                                            &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  &none        &kp PAUSE_BREAK
+          &trans            &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &kp PSCRN
+          &trans            &kp STAR      &kp HASH     &kp PT_LBKT &kp PT_RBKT &kp PT_PIPE                                                                &kp PRCNT    &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS &kp SLCK
+          &trans            &kp AT        &kp DOLLAR   &kp LPAR    &kp RPAR    &kp PT_CARET                                                               &kp COMMA    &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_mply  &trans
+          &trans            &kp EXCL      &kp AMPS     &kp LBRC    &kp RBRC    &kp PT_TILDE &trans  &trans    &to DONTQY      &trans   &trans   &trans    &kp KP_DOT   &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_PLUS  &trans
+          &trans            &kp KP_MINUS  &kp KP_EQUAL &kp LT      &kp GT                   &trans  &trans    &trans          &trans   &trans   &trans                 &kp KP_N0  &kp KP_DOT   &kp KP_EQUAL  &kp KP_SLASH &trans
             >;
         };
 
