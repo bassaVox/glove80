@@ -84,6 +84,13 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
+        underspc: space_underline {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp SPACE>, <&kp LS(MINUS)>;
+        };
+    };
     };
 
     macros {
@@ -151,7 +158,7 @@
           &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
           &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
           &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp HOME &kp END   &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
-          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
+          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &underspc              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
           >;
         };
 
