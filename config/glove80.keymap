@@ -44,6 +44,10 @@
 #define PT_RBRC (PT_RIGHT_BRACE)
 #define PT_UNDERSCORE (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_MINUS_AND_UNDERSCORE)))
 #define PT_UNDER (PT_UNDERSCORE)
+#define PT_QUESTION (RA(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_W)))
+#define PT_QMARK (PT_QUESTION)
+#define PT_EXCLAMATION (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_1_AND_EXCLAMATION)))
+#define PT_EXCL (PT_EXCLAMATION)
 
 
 #define KP_mply (KP_MULTIPLY)
@@ -190,12 +194,12 @@
 
         pager_layer {
             bindings = <
-            &none           &none         &none        &none       &none                                                                                               &none      &none        &none         &none        &none
-            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
-            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
-            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
-            &none           &none         &none        &none       &none       &none     &none     &none   &none             &none     &none    &none     &none        &none      &none        &none         &none        &none
-            &none           &none         &none        &none       &none                 &none     &none   &none             &none     &none    &kp PT_UNDER           &none      &none        &none         &none        &none
+            &trans          &trans        &trans       &trans      &trans                                                                                              &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &trans       &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &PT_QMARK    &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &PT_EXCL     &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans    &none     &trans  &trans            &trans    &trans   &trans    &trans       &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans                &trans    &trans  &trans            &trans    &trans   &kp PT_UNDER           &trans     &trans       &trans        &trans       &trans
             >;
         };
         
