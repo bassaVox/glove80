@@ -42,6 +42,8 @@
 #define PT_LBRC (PT_LEFT_BRACE)
 #define PT_RIGHT_BRACE (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_BACKSLASH_AND_PIPE)))
 #define PT_RBRC (PT_RIGHT_BRACE)
+#define PT_UNDERSCORE (LS(ZMK_HID_USAGE(HID_USAGE_KEY, HID_USAGE_KEY_KEYBOARD_MINUS_AND_UNDERSCORE)))
+#define PT_UNDER (PT_UNDERSCORE)
 
 
 #define KP_mply (KP_MULTIPLY)
@@ -58,11 +60,24 @@
  */
 
 
+/* none_layer { */
+/*             bindings = < */
+/*             &none           &none         &none        &none       &none                                                                                               &none      &none        &none         &none        &none */
+/*             &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none */
+/*             &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none */
+/*             &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none */
+/*             &none           &none         &none        &none       &none       &none     &none     &none   &none             &none     &none    &none     &none        &none      &none        &none         &none        &none */
+/*             &none           &none         &none        &none       &none                 &none     &none   &none             &none     &none    &none                  &none      &none        &none         &none        &none */
+/*             >; */
+/*         }; */
+
+
 // layers
 #define DONTQY 0 // DEFAULT
 #define SYMBOL 1 // LOWER 1
-#define MAGIC 2
-#define FACTORY_TEST 3
+#define PAGER  2
+#define MAGIC  3
+#define FACTORY_TEST 4
 
 / { // root device tree Node
     behaviors {
@@ -84,7 +99,7 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
-        underspc: space_underline {
+        underspc: space_underline { // don't like the lagging when spacing
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -156,8 +171,8 @@
           &kp ESC           &kp N1        &kp N2       &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7     &kp N8       &kp N9        &kp N0       &kp MINUS
           &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
           &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
-          &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &kp PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp HOME &kp END   &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
-          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &underspc              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
+          &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &lt PAGER PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp HOME &kp END   &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
+          &kp LMETA         &kp PT_BSLH   &kp PT_COLON &kp LEFT    &kp RIGHT              &kp RET   &kp LCTRL &kp DEL         &kp BSPC &kp LALT &kp SPACE              &kp DOWN   &kp UP       &kp EQUAL     &kp PT_FSLH  &kp RMETA
           >;
         };
 
@@ -172,6 +187,18 @@
             >;
         };
 
+
+        pager_layer {
+            bindings = <
+            &none           &none         &none        &none       &none                                                                                               &none      &none        &none         &none        &none
+            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
+            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
+            &none           &none         &none        &none       &none       &none                                                                      &none        &none      &none        &none         &none        &none
+            &none           &none         &none        &none       &none       &none     &none     &none   &none             &none     &none    &none     &none        &none      &none        &none         &none        &none
+            &none           &none         &none        &none       &none                 &none     &none   &none             &none     &none    &kp PT_UNDER           &none      &none        &none         &none        &none
+            >;
+        };
+        
         magic_layer {
             bindings = <
             &bt BT_CLR      &none         &none        &none       &none                                                                                               &none      &none        &none         &none        &bt BT_CLR_ALL
