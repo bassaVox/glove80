@@ -196,8 +196,8 @@
             bindings = <
             &trans          &trans        &trans       &trans      &trans                                                                                              &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans      &trans                                                                     &trans       &trans     &trans       &trans        &trans       &trans
-            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &PT_QMARK    &trans     &trans       &trans        &trans       &trans
-            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &PT_EXCL     &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &kp PT_QMARK &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans                                                                     &kp PT_EXCL  &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans      &trans    &none     &trans  &trans            &trans    &trans   &trans    &trans       &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans                &trans    &trans  &trans            &trans    &trans   &kp PT_UNDER           &trans     &trans       &trans        &trans       &trans
             >;
