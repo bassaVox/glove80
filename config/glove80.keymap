@@ -91,7 +91,6 @@
             bindings = <&kp SPACE>, <&kp LS(MINUS)>;
         };
     };
-    };
 
     macros {
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
