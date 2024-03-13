@@ -111,14 +111,14 @@
             bindings = <&kp SPACE>, <&kp LS(MINUS)>;
         };
 
-        lshftcaps: tap_dance_0 {
+        lshftcaps: tap_dance_lshftcaps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp CAPS>;
         };
       
-        rshftcaps: tap_dance_0 {
+        rshftcaps: tap_dance_rshftcaps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
