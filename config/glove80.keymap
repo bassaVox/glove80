@@ -172,7 +172,7 @@
 
           bindings = <
           &kp F1            &kp F2        &kp F3       &kp F4      &kp F5                                                                                              &kp F6     &kp F7       &kp F8        &kp F9       &kp F10
-          &kp ESC           &kp N1        &kp N2       &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7     &kp N8       &kp N9        &kp N0       &kp MINUS
+          &kp ESC           &kp N1        &kp N2       &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7     &kp N8       &kp N9        &kp N0       &none
           &kp TAB           &kp X         &kp Y        &kp O       &kp U       &kp J                                                                      &kp PT_SEMI  &kp F      &kp D        &kp W         &kp Q        &kp PT_ACUTE
           &lt SYMBOL PT_SQT &kp C         &kp I        &kp E       &kp A       &kp K                                                                      &kp COMMA    &kp N      &kp T        &kp S         &kp P        &lt SYMBOL PT_TILDE 
           &kp LSHFT         &kp C_Dilla   &kp V        &kp L       &kp H       &kp Z      &lt PAGER PG_UP &kp PG_DN &magic MAGIC 0  &kp RALT &kp HOME &kp END   &kp DOT      &kp R      &kp M        &kp G         &kp B        &kp RSHFT
@@ -198,7 +198,7 @@
             &trans          &trans        &trans       &trans      &trans      &trans                                                                     &trans       &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans      &trans                                                                     &kp PT_QMARK &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans      &trans                                                                     &kp PT_EXCL  &trans     &trans       &trans        &trans       &trans
-            &trans          &trans        &trans       &trans      &trans      &trans    &none     &trans  &trans            &trans    &trans   &trans    &trans       &trans     &trans       &trans        &trans       &trans
+            &trans          &trans        &trans       &trans      &trans      &trans    &none     &trans  &trans            &trans    &trans   &kp MINUS &kp DOT      &trans     &trans       &trans        &trans       &trans
             &trans          &trans        &trans       &trans      &trans                &trans    &trans  &trans            &trans    &trans   &kp PT_UNDER           &trans     &trans       &trans        &trans       &trans
             >;
         };
